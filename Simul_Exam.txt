@@ -1,24 +1,104 @@
 (1)《必考題》請寫出Android系統架構有幾層，分別是哪幾層?
+    - Linux kernel
+	- HAL
+	- Application framework/System Server(Ex: media server, view server)
+	- App
+	
+	or
+
+	- Linux kernel
+	- HAL
+	- Native Library/Android runtime(ART, DALVIK VM)
+	- Application framework
+	- App
 
 (2)《必考題》請簡要介紹Android的四大組件？
+	Android use intent to communicate with different component
+	- Activity: Main UI component
+	- Broadcast Receiver: Android define many broadcast event and app could listen these events. App could also define self event.
+	- Service: No ui long running background process
+	- Content Provider/Resolver: Data provider(sharing) or accessor. Usually apply in different app data sharing
 
-(3)《必考題》Activity或Fragment的生命周期?
+(3)《必考題》Activity或Fragment的生命周期? (TODO)
+	- Activity
+	  -onCreate
+	  ---Visible ++ ---
+	  -onStart
+	  (-onRestoreInstanceState)
+	  ---Focus ++ ---
+	  -onResume
+	  (-onSavedInstanceState)
+	  -onPause
+	  ---Focus -- ---
+	  -onStop
+	  ---Visible -- ---
+	  -onDestroy
+
+	- Fragment
+	  -onAttached
+	  -onCreate
+	  -onCreateView
+	  -onActivityCreated
+
+	  -onStart
+
+	  -onResume
+
+	  -onPause
+
+	  -onStop
+
+	  -onDestroyView
+	  -onDestroy
+	  -onDetach
 
 (4)《必考題》Activity的四種基本狀態分別是哪些?
+	- Running
+	- Paused
+	- Stoped
+	- Destroyed
 
 (5)《必考題》activity的啟動模式?
+	https://developer.android.com/guide/components/activities/tasks-and-back-stack.html
+	- standard - New instance each time even in the same task
+	- SingleTop - Do not new instance when on top(call onNewIntent instead) or new instance event in the same task
+	- SingleTask - New instance with new task if no activity instance exists or call on newIntent when activity instance exists and clear other top activity
+	- SingleInstance - Activity instance must locate in new task(and the only one). If there is a task with only one activity. Then launch activity would call onNewIntent
 
 (6)《必考題》Android中的五大布局?
+	- Linearlayout
+	- RelativeLayout
+	- TableLayout
+	- FrameLayout
+	- AbsoluteLayout
 
-(7)《必考題》ListView的緩存原理?
+(7)《必考題》ListView的緩存原理? (TODO: List all related classes)
+	- RecyclerView cache view instance and change content when scroll to visible
+	  ViewHolder
 
 (8)《必考題》談談android數據存儲方式?
+	- SQLite
+	- Sharepreference
+	- Content provider
+	- Network
+	- Local File io
 
-(9)《必考題》Service與廣播機制?
+(9)《必考題》Service與廣播機制? (TODO:)
+	- Service: onCreate, onServiceCreate, onBind, onRebind, onDestroy
+	- BroadCastReceiver: onReceive
 
 (10)《必考題》handler機制的原理?
+	- Each thread has one looper, use handler to send message to looper
 
 (11)《必考題》請簡析TCP和UDP的區別？
+	- TCP: handshake to secure data and transmit order is correct
+	- UDP: Transmit without considering the data is received or order is right
 
 (12)《必考題》GET和POST方法主要的三點區別?
+	- GET: Set parameter in URL
+	       Use to query data
+		   Transmit size is limited
+	- POST: Send data to server by set it in header
+			Use to trigger some data change in server
+			Unlimited request size
 
