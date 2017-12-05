@@ -53,7 +53,7 @@
 	  -onDetach
 
 (4)《必考題》Activity的四種基本狀態分別是哪些?
-	- Running
+	- Started
 	- Paused
 	- Stoped
 	- Destroyed
@@ -72,9 +72,15 @@
 	- FrameLayout
 	- AbsoluteLayout
 
-(7)《必考題》ListView的緩存原理? (TODO: List all related classes)
+(7)《必考題》ListView的緩存原理?
 	- RecyclerView cache view instance and change content when scroll to visible
-	  ViewHolder
+	  RecyclerView/LayoutManager/ViewHolder
+	  RecyclerView use adapter to manage ViewHolder(
+		onCreateViewHolder -> onBindViewHolder
+		adapter notifyall should be used carefully, if only one item need to be updated then use notifyItemChanged
+	  ) and change list layout by changing layout manager
+	  
+	  ListView: declare ViewHolder static class and inflate viewholder only when convertView is null then set the viewholder into tag of convertView
 
 (8)《必考題》談談android數據存儲方式?
 	- SQLite
@@ -83,11 +89,22 @@
 	- Network
 	- Local File io
 
-(9)《必考題》Service與廣播機制? (TODO:)
-	- Service: onCreate, onServiceCreate, onBind, onRebind, onDestroy
+(9)《必考題》Service與廣播機制? How about IntentService?(TODO:https://developer.android.com/guide/components/services.html Extending the Service class)
+	- Service: onCreate, onStartCommand, onBind, onDestroy
+	Start Service: Receive data from intent pass from onStartCommand
+		startService: onCreate(only first time created) -> onStartCommand(called when each startService triggered) -> onDestroy(Trigger when stopSelf or stopService trigger by other component)
+	Bind Service:
+		bindService: onBind -> onDestroy(called when all clients are unbind)
+		*Since api 21, binService with implict intent would cause exception
 	- BroadCastReceiver: onReceive
+	
+	Impl. "android:description" to avoid end user manual kill process
+	IntentService: execute work in background thread and queue all request, since api 26 use "JobIntentService" instead
+	
+	Service - provide long running task and could be bind in IPC
+	Background service should changed to Scheduled Job since API 26
 
-(10)《必考題》handler機制的原理?
+(10)《必考題》handler機制的原理?(TODO:https://developer.android.com/training/multiple-threads/communicate-ui.html)
 	- Each thread has one looper, use handler to send message to looper
 
 (11)《必考題》請簡析TCP和UDP的區別？
