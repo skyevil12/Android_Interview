@@ -1,4 +1,4 @@
-(1)¡m¥²¦ÒÃD¡n½Ğ¼g¥XAndroid¨t²Î¬[ºc¦³´X¼h¡A¤À§O¬O­ş´X¼h?
+(1)ã€Šå¿…è€ƒé¡Œã€‹è«‹å¯«å‡ºAndroidç³»çµ±æ¶æ§‹æœ‰å¹¾å±¤ï¼Œåˆ†åˆ¥æ˜¯å“ªå¹¾å±¤?
     - Linux kernel
 	- HAL
 	- Application framework/System Server(Ex: media server, view server)
@@ -12,14 +12,14 @@
 	- Application framework
 	- App
 
-(2)¡m¥²¦ÒÃD¡n½ĞÂ²­n¤¶²ĞAndroidªº¥|¤j²Õ¥ó¡H
+(2)ã€Šå¿…è€ƒé¡Œã€‹è«‹ç°¡è¦ä»‹ç´¹Androidçš„å››å¤§çµ„ä»¶ï¼Ÿ
 	Android use intent to communicate with different component
 	- Activity: Main UI component
 	- Broadcast Receiver: Android define many broadcast event and app could listen these events. App could also define self event.
 	- Service: No ui long running background process
 	- Content Provider/Resolver: Data provider(sharing) or accessor. Usually apply in different app data sharing
 
-(3)¡m¥²¦ÒÃD¡nActivity©ÎFragmentªº¥Í©R©P´Á? (TODO)
+(3)ã€Šå¿…è€ƒé¡Œã€‹Activityæˆ–Fragmentçš„ç”Ÿå‘½å‘¨æœŸ? (TODO)
 	- Activity
 	  -onCreate
 	  ---Visible ++ ---
@@ -52,27 +52,27 @@
 	  -onDestroy
 	  -onDetach
 
-(4)¡m¥²¦ÒÃD¡nActivityªº¥|ºØ°ò¥»ª¬ºA¤À§O¬O­ş¨Ç?
+(4)ã€Šå¿…è€ƒé¡Œã€‹Activityçš„å››ç¨®åŸºæœ¬ç‹€æ…‹åˆ†åˆ¥æ˜¯å“ªäº›?
 	- Started
 	- Paused
 	- Stoped
 	- Destroyed
 
-(5)¡m¥²¦ÒÃD¡nactivityªº±Ò°Ê¼Ò¦¡?
+(5)ã€Šå¿…è€ƒé¡Œã€‹activityçš„å•Ÿå‹•æ¨¡å¼?
 	https://developer.android.com/guide/components/activities/tasks-and-back-stack.html
 	- standard - New instance each time even in the same task
 	- SingleTop - Do not new instance when on top(call onNewIntent instead) or new instance event in the same task
-	- SingleTask - New instance with new task if no activity instance exists or call on newIntent when activity instance exists and clear other top activity
+	- SingleTask - New instance with new task if no activity instance exists or call on newIntent when activity instance exists (and clear other top activity?)
 	- SingleInstance - Activity instance must locate in new task(and the only one). If there is a task with only one activity. Then launch activity would call onNewIntent
 
-(6)¡m¥²¦ÒÃD¡nAndroid¤¤ªº¤­¤j¥¬§½?
+(6)ã€Šå¿…è€ƒé¡Œã€‹Androidä¸­çš„äº”å¤§å¸ƒå±€?
 	- Linearlayout
 	- RelativeLayout
 	- TableLayout
 	- FrameLayout
 	- AbsoluteLayout
 
-(7)¡m¥²¦ÒÃD¡nListViewªº½w¦s­ì²z?
+(7)ã€Šå¿…è€ƒé¡Œã€‹ListViewçš„ç·©å­˜åŸç†?
 	- RecyclerView cache view instance and change content when scroll to visible
 	  RecyclerView/LayoutManager/ViewHolder
 	  RecyclerView use adapter to manage ViewHolder(
@@ -82,14 +82,14 @@
 	  
 	  ListView: declare ViewHolder static class and inflate viewholder only when convertView is null then set the viewholder into tag of convertView
 
-(8)¡m¥²¦ÒÃD¡n½Í½Íandroid¼Æ¾Ú¦sÀx¤è¦¡?
+(8)ã€Šå¿…è€ƒé¡Œã€‹è«‡è«‡androidæ•¸æ“šå­˜å„²æ–¹å¼?
 	- SQLite
 	- Sharepreference
 	- Content provider
 	- Network
 	- Local File io
 
-(9)¡m¥²¦ÒÃD¡nService»P¼s¼½¾÷¨î? How about IntentService?(TODO:https://developer.android.com/guide/components/services.html Extending the Service class)
+(9)ã€Šå¿…è€ƒé¡Œã€‹Serviceèˆ‡å»£æ’­æ©Ÿåˆ¶? How about IntentService?(TODO:https://developer.android.com/guide/components/services.html Extending the Service class)
 	- Service: onCreate, onStartCommand, onBind, onDestroy
 	Start Service: Receive data from intent pass from onStartCommand
 		startService: onCreate(only first time created) -> onStartCommand(called when each startService triggered) -> onDestroy(Trigger when stopSelf or stopService trigger by other component)
@@ -104,14 +104,14 @@
 	Service - provide long running task and could be bind in IPC
 	Background service should changed to Scheduled Job since API 26
 
-(10)¡m¥²¦ÒÃD¡nhandler¾÷¨îªº­ì²z?(TODO:https://developer.android.com/training/multiple-threads/communicate-ui.html)
+(10)ã€Šå¿…è€ƒé¡Œã€‹handleræ©Ÿåˆ¶çš„åŸç†?(TODO:https://developer.android.com/training/multiple-threads/communicate-ui.html)
 	- Each thread has one looper, use handler to send message to looper
 
-(11)¡m¥²¦ÒÃD¡n½ĞÂ²ªRTCP©MUDPªº°Ï§O¡H
+(11)ã€Šå¿…è€ƒé¡Œã€‹è«‹ç°¡æTCPå’ŒUDPçš„å€åˆ¥ï¼Ÿ
 	- TCP: handshake to secure data and transmit order is correct
 	- UDP: Transmit without considering the data is received or order is right
 
-(12)¡m¥²¦ÒÃD¡nGET©MPOST¤èªk¥D­nªº¤TÂI°Ï§O?
+(12)ã€Šå¿…è€ƒé¡Œã€‹GETå’ŒPOSTæ–¹æ³•ä¸»è¦çš„ä¸‰é»å€åˆ¥?
 	- GET: Set parameter in URL
 	       Use to query data
 		   Transmit size is limited
